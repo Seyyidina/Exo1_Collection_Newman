@@ -1,0 +1,22 @@
+{
+	"id": "3b3aa084-91ee-457a-8663-9c59d6d3fe0f",
+	"name": "Env2",
+	"values": [
+		{
+			"key": "url",
+			"value": "https://api.efi-academy.com",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"color": null,
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2026-06-24T09:56:42.537Z",
+	"_postman_exported_using": "Postman/12.15.5"
+}

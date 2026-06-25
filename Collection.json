@@ -1,0 +1,58 @@
+{
+  "info": {
+    "_postman_id": "cd1ccdb8-5dcf-4c48-b1a8-78f99034cb38",
+    "name": "Collection_1",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "55569195",
+    "_collection_link": "https://go.postman.co/collection/55569195-cd1ccdb8-5dcf-4c48-b1a8-78f99034cb38?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "requete_1",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "{{url}}/public/employees",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "public",
+            "employees"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
