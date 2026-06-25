@@ -21,37 +21,36 @@ pipeline{
                 stage('clean allure results'){
                     
                     steps{
-                        sh 'npx newman run Collection.json -e ./Environment/' + params.Environnement + '.json  --reporters cli,allure --reporter-allure-resultsDir output/allure-results'
-                    }
-                }
-        
-                stage('run user test'){
-                    steps{
                         sh '''
-                            "
+                            echo "Suppression du cache Allure..."
                             rm -rf output
                             mkdir -p output
                             echo "Dossier output nettoyé avec succès"
                         '''
-                        
+                    }
+                }
+        
+                stage('run user test'){
+                    steps{  
+                        sh 'npx newman run Collection.json -e ./Environment/' + params.Environnement + '.json  --reporters cli,allure --reporter-allure-resultsDir output/allure-results'
+
+                        }
                     }
                 }
             }
         }
-    }
-}
     }
     post{
         always{
             script{
                 if(params.ALLURE){
                     unstash 'allure-results'
-                    archiveArtifacts 'output/*'
+                    archiveArtifacts 'allure-results/*'
                     allure includeProperties: false,
                            jdk: '',
-                           results: [[path: 'output/']]
+                           results: [[path: 'allure-results/']]
                 }
             }
         }
     }
-}
+
