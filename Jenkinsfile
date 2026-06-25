@@ -33,7 +33,7 @@ pipeline{
                 stage('run user test'){
                     steps{  
                         sh 'npx newman run Collection.json -e ./Environment/' + params.Environnement + '.json  --reporters cli,allure --reporter-allure-resultsDir output/allure-results'
-
+                        stash name: 'output', includes: 'output/*'
                         }
                     }
                 }
@@ -43,13 +43,11 @@ pipeline{
     post{
         always{
             script{
-                if(params.ALLURE){
-                    unstash 'allure-results'
-                    archiveArtifacts 'allure-results/*'
+                    unstash 'output'
+                    archiveArtifacts '/*'
                     allure includeProperties: false,
                            jdk: '',
-                           results: [[path: 'allure-results/']]
-                }
+                           results: [[path: 'output/']]
             }
         }
     }
