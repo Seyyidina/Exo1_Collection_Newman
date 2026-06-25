@@ -32,7 +32,7 @@ pipeline{
         
                 stage('run user test'){
                     steps{  
-                        sh 'npx newman run Collection.json -e ./Environment/' + params.Environnement + '.json  --reporters cli,allure --reporter-allure-resultsDir output/allure-results'
+                        sh 'npx newman run Collection.json -e ./Environment/' + params.Environnement + '.json  --reporters cli,allure --reporter-allure-resultsDir output'
                         stash name: 'output', includes: 'output/*'
                         }
                     }
