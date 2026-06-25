@@ -7,7 +7,7 @@ pipeline{
         stage('global stage'){
             agent{
                 docker{
-                    image 'lts-alpine3.24:latest'
+                    image 'lts-alpine3.24'
                     args '-u root --entrypoint='
                 }
             }
